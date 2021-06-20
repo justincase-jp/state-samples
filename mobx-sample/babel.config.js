@@ -11,6 +11,8 @@ module.exports = function (api) {
     "plugins": ["jsx", "typescript"],
   };
   const plugins = [
+    ['@babel/plugin-proposal-class-properties', { loose: true }],
+    ["@babel/plugin-proposal-private-methods", { loose: true }],
   ];
   return {
     presets,

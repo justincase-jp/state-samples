@@ -1,11 +1,13 @@
 import React from 'react';
+import { AppStateContext, AppStateStore } from './AppStateStore';
+import { MainPage } from './MainPage';
 
 const App: React.FunctionComponent = () => {
   return (
-    <h1>
-      Sample App - MobX
-    </h1>
-  )
+    <AppStateContext.Provider value={new AppStateStore()}>
+      <MainPage />
+    </AppStateContext.Provider>
+  );
 };
 
 export default App;
