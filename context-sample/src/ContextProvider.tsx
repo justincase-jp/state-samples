@@ -1,15 +1,6 @@
 import React, { createContext, useContext, useState, Dispatch, FunctionComponent, SetStateAction } from 'react';
 
-type Dispatcher<T> = Dispatch<SetStateAction<T>>;
-
-export type AppState = {
-  age: number;
-  gender?: 'male' | 'female';
-  name?: string;
-}
-const initialState: AppState = {
-  age: 20,
-};
+// --- a table for premium quote
 const quoteTable = {
   male: [
     { age: 10, value: 100 },
@@ -28,6 +19,18 @@ const quoteTable = {
     { age: 60, value: 570 },
   ],
 };
+
+// --- app state
+export type AppState = {
+  age: number;
+  gender?: 'male' | 'female';
+  name?: string;
+}
+const initialState: AppState = {
+  age: 20,
+};
+
+type Dispatcher<T> = Dispatch<SetStateAction<T>>;
 
 const StateContext = createContext<AppState>(initialState);
 const SetStateContext = createContext<Dispatcher<AppState>>(() => {});

@@ -2,14 +2,7 @@ import { atom } from 'jotai';
 import { selectAtom } from 'jotai/utils';
 import deepEqual from 'fast-deep-equal';
 
-export type AppState = {
-  age: number;
-  gender?: 'male' | 'female';
-  name?: string;
-}
-const initialState: AppState = {
-  age: 20,
-};
+// --- a table for premium quote
 const quoteTable = {
   male: [
     { age: 10, value: 100 },
@@ -27,6 +20,16 @@ const quoteTable = {
     { age: 50, value: 450 },
     { age: 60, value: 570 },
   ],
+};
+
+// --- app state
+export type AppState = {
+  age: number;
+  gender?: 'male' | 'female';
+  name?: string;
+}
+const initialState: AppState = {
+  age: 20,
 };
 
 export const stateAtom = atom<AppState>(initialState);

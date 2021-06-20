@@ -1,6 +1,7 @@
 import { makeAutoObservable } from 'mobx';
 import { createContext } from 'react';
 
+// --- a table for premium quote
 const quoteTable = {
   male: [
     { age: 10, value: 100 },
@@ -20,6 +21,7 @@ const quoteTable = {
   ],
 };
 
+// --- app state
 export class AppStateStore {
   public age: number = 20;
   public gender?: 'male' | 'female';
