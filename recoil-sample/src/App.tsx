@@ -1,11 +1,13 @@
 import React from 'react';
+import { RecoilRoot } from 'recoil';
+import { MainPage } from './MainPage';
 
 const App: React.FunctionComponent = () => {
   return (
-    <h1>
-      Sample App - Recoil
-    </h1>
-  )
+    <RecoilRoot>
+      <MainPage />
+    </RecoilRoot>
+  );
 };
 
 export default App;
