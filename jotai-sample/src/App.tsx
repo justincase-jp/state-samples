@@ -1,11 +1,13 @@
 import React from 'react';
+import { Provider } from 'jotai';
+import { MainPage } from './MainPage';
 
 const App: React.FunctionComponent = () => {
   return (
-    <h1>
-      Sample App - Jotai
-    </h1>
-  )
+    <Provider>
+      <MainPage />
+    </Provider>
+  );
 };
 
 export default App;
