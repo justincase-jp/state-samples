@@ -1,11 +1,13 @@
 import React from 'react';
+import { ContextProvider } from './ContextProvider';
+import { MainPage } from './MainPage';
 
 const App: React.FunctionComponent = () => {
   return (
-    <h1>
-      Sample App - Context
-    </h1>
-  )
+    <ContextProvider>
+      <MainPage />
+    </ContextProvider>
+  );
 };
 
 export default App;
