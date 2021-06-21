@@ -7,6 +7,7 @@ This repository contains sample code for the following libraries:
 - [MobX](https://mobx.js.org/)
 - [Recoil](https://recoiljs.org/)
 - [Jotai](https://jotai.pmnd.rs/)
+- [Zustand](https://zustand.surge.sh/)
 
 ## License
 
