@@ -2,40 +2,37 @@ import React, { FunctionComponent } from 'react';
 import { quotePremium, useSetStateContext, useStateContext } from './ContextProvider';
 
 const NameInput: FunctionComponent = () => {
-  const condition = useStateContext();
-  const setCondition = useSetStateContext();
+  const appState = useStateContext();
+  const setAppState = useSetStateContext();
   return (
     <input
       type='text' 
       size={20} 
-      value={condition.name ?? ''} 
-      onChange={(e) => {
-        const name = e.target.value;
-        setCondition({ ...condition, name });
-      }}
+      value={appState.name ?? ''} 
+      onChange={(e) => setAppState({ ...appState, name: e.target.value })}
     />
   );
 }
 
 const AgeInput: FunctionComponent = () => {
-  const condition = useStateContext();
-  const setCondition = useSetStateContext();
+  const appState = useStateContext();
+  const setAppState = useSetStateContext();
   return (
     <input 
       type='text' 
       size={4} 
-      value={condition.age ? condition.age : ''}
+      value={appState.age ? appState.age : ''}
       onChange={(e) => {
         const age = parseInt(e.target.value);
-        setCondition({...condition, age: isNaN(age) ? 0 : age });
+        setAppState({...appState, age: isNaN(age) ? 0 : age });
       }}
     />
   );
 }
 
 const GenderInput: FunctionComponent = () => {
-  const condition = useStateContext();
-  const setCondition = useSetStateContext();
+  const appState = useStateContext();
+  const setAppState = useSetStateContext();
   return (
     <>
       <label>
@@ -43,8 +40,8 @@ const GenderInput: FunctionComponent = () => {
           type='radio' 
           name='gender' 
           value='male' 
-          checked={condition.gender === 'male'}
-          onChange={(e) => setCondition({ ...condition, gender: e.target.value as 'male' | 'female' })}
+          checked={appState.gender === 'male'}
+          onChange={(e) => setAppState({ ...appState, gender: e.target.value as 'male' | 'female' })}
         />
         男性
       </label>
@@ -53,8 +50,8 @@ const GenderInput: FunctionComponent = () => {
           type='radio' 
           name='gender' 
           value='female' 
-          checked={condition.gender === 'female'}
-          onChange={(e) => setCondition({ ...condition, gender: e.target.value as 'male' | 'female' })}
+          checked={appState.gender === 'female'}
+          onChange={(e) => setAppState({ ...appState, gender: e.target.value as 'male' | 'female' })}
         />
         女性
       </label>
@@ -63,11 +60,11 @@ const GenderInput: FunctionComponent = () => {
 }
 
 const Result: FunctionComponent = () => {
-  const condition = useStateContext();
+  const appState = useStateContext();
   return (
     <dl>
-      <dt>見積り {condition.name ? `[${condition.name}さま]` : ''}</dt>
-      <dd>{quotePremium(condition) ?? '--'} 円</dd>
+      <dt>見積り {appState.name ? `[${appState.name}さま]` : ''}</dt>
+      <dd>{quotePremium(appState) ?? '--'} 円</dd>
     </dl>
   );
 }

@@ -9,9 +9,7 @@ const NameInput = observer(() => {
       type='text' 
       size={20} 
       value={appState.name ?? ''} 
-      onChange={(e) => {
-        appState.name = e.target.value;
-      }}
+      onChange={(e) => (appState.name = e.target.value)}
     />
   );
 });
@@ -41,9 +39,7 @@ const GenderInput = observer(() => {
           name='gender' 
           value='male' 
           checked={appState.gender === 'male'}
-          onChange={(e) => {
-            appState.gender = e.target.value as 'male' | 'female';
-          }}
+          onChange={(e) => (appState.gender = e.target.value as 'male' | 'female')}
         />
         男性
       </label>
