@@ -1,5 +1,5 @@
 import React from 'react';
-import { ContextProvider } from './ContextProvider';
+import { ContextProvider } from './AppState';
 import { MainPage } from './MainPage';
 
 const App: React.FunctionComponent = () => {

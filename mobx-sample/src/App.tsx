@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppStateContext, AppStateStore } from './AppStateStore';
+import { AppStateContext, AppStateStore } from './AppState';
 import { MainPage } from './MainPage';
 
 const App: React.FunctionComponent = () => {

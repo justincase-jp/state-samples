@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { quotePremium, useSetStateContext, useStateContext } from './ContextProvider';
+import { quotePremium, useSetStateContext, useStateContext } from './AppState';
 
 const NameInput: FunctionComponent = () => {
   const appState = useStateContext();

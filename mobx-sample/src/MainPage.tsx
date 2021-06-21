@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react-lite';
 import React, { FunctionComponent, useContext } from 'react';
-import { AppStateContext } from './AppStateStore';
+import { AppStateContext } from './AppState';
 
 const NameInput = observer(() => {
   const appState = useContext(AppStateContext);
