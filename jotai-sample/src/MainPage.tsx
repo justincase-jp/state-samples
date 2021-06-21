@@ -1,42 +1,39 @@
 import { useAtomValue, useUpdateAtom } from 'jotai/utils';
 import React, { FunctionComponent } from 'react';
-import { nameAtom, quoteAtom, stateAtom } from './AppState';
+import { ageAtom, genderAtom, nameAtom, quoteAtom } from './AppState';
 
 const NameInput: FunctionComponent = () => {
-  const condition = useAtomValue(stateAtom);
-  const setCondition = useUpdateAtom(stateAtom);
+  const name = useAtomValue(nameAtom);
+  const setName = useUpdateAtom(nameAtom);
   return (
     <input
       type='text' 
       size={20} 
-      value={condition.name ?? ''} 
-      onChange={(e) => {
-        const name = e.target.value;
-        setCondition({ ...condition, name });
-      }}
+      value={name ?? ''} 
+      onChange={(e) => setName(e.target.value)}
     />
   );
 }
 
 const AgeInput: FunctionComponent = () => {
-  const condition = useAtomValue(stateAtom);
-  const setCondition = useUpdateAtom(stateAtom);
+  const age = useAtomValue(ageAtom);
+  const setAge = useUpdateAtom(ageAtom);
   return (
     <input 
       type='text' 
       size={4} 
-      value={condition.age ? condition.age : ''}
+      value={age ? age : ''}
       onChange={(e) => {
         const age = parseInt(e.target.value);
-        setCondition({...condition, age: isNaN(age) ? 0 : age });
+        setAge(isNaN(age) ? 0 : age);
       }}
     />
   );
 }
 
 const GenderInput: FunctionComponent = () => {
-  const condition = useAtomValue(stateAtom);
-  const setCondition = useUpdateAtom(stateAtom);
+  const gender = useAtomValue(genderAtom);
+  const setGender = useUpdateAtom(genderAtom);
   return (
     <>
       <label>
@@ -44,8 +41,8 @@ const GenderInput: FunctionComponent = () => {
           type='radio' 
           name='gender' 
           value='male' 
-          checked={condition.gender === 'male'}
-          onChange={(e) => setCondition({ ...condition, gender: e.target.value as 'male' | 'female' })}
+          checked={gender === 'male'}
+          onChange={(e) => setGender(e.target.value as 'male' | 'female')}
         />
         男性
       </label>
@@ -54,8 +51,8 @@ const GenderInput: FunctionComponent = () => {
           type='radio' 
           name='gender' 
           value='female' 
-          checked={condition.gender === 'female'}
-          onChange={(e) => setCondition({ ...condition, gender: e.target.value as 'male' | 'female' })}
+          checked={gender === 'female'}
+          onChange={(e) => setGender(e.target.value as 'male' | 'female')}
         />
         女性
       </label>

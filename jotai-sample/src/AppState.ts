@@ -33,16 +33,27 @@ const initialState: AppState = {
 };
 
 export const stateAtom = atom<AppState>(initialState);
-export const ageAtom = selectAtom(stateAtom, (appState) => appState.age, deepEqual);
-export const genderAtom = selectAtom(stateAtom, (appState) => appState.gender, deepEqual);
-export const nameAtom = selectAtom(stateAtom, (appState) => appState.name, deepEqual);
-export const quoteAtom = atom<number | undefined>(
-  (get) => {
-    const gender = get(genderAtom);
-    const age = get(ageAtom);
+export const ageAtom = atom<number, number>(
+  (get) => get(stateAtom).age,
+  (get, set, age) => set(stateAtom, { ...get(stateAtom), age }),
+);
+export const genderAtom = atom<'male' | 'female' | undefined, 'male' | 'female' | undefined>(
+  (get) => get(stateAtom).gender,
+  (get, set, gender) => set(stateAtom, { ...get(stateAtom), gender }),
+);
+export const nameAtom = atom<string | undefined, string | undefined>(
+  (get) => get(stateAtom).name,
+  (get, set, name) => set(stateAtom, { ...get(stateAtom), name }),
+);
+export const quoteAtom = selectAtom(
+  stateAtom,
+  (appState) => {
+    const gender = appState.gender;
+    const age = appState.age;
     if (!gender || age < 10) {
       return;
     }
     return quoteTable[gender].reduce((acc, cur) => (age >= cur.age ? cur.value : acc), 0);
-  }
+  },
+  deepEqual,
 );
