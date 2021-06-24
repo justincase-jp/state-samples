@@ -37,17 +37,17 @@ export const stateAtom = atom<AppState>({
 export const ageAtom = selector<number>({
   key: 'AgeSelector',
   get: ({get}) => get(stateAtom).age,
-  set: ({get, set}, newValue) => set(stateAtom, { ...get(stateAtom), age: newValue } as AppState)
+  set: ({get, set}, age) => set(stateAtom, { ...get(stateAtom), age } as AppState)
 });
 export const genderAtom = selector<'male' | 'female' | undefined>({
   key: 'GenderSelector',
   get: ({get}) => get(stateAtom).gender,
-  set: ({get, set}, newValue) => set(stateAtom, { ...get(stateAtom), gender: newValue } as AppState)
+  set: ({get, set}, gender) => set(stateAtom, { ...get(stateAtom), gender } as AppState)
 });
 export const nameAtom = selector<string | undefined>({
   key: 'NameSelector',
   get: ({get}) => get(stateAtom).name,
-  set: ({get, set}, newValue) => set(stateAtom, { ...get(stateAtom), name: newValue } as AppState)
+  set: ({get, set}, name) => set(stateAtom, { ...get(stateAtom), name } as AppState)
 });
 export const quoteAtom = selector<number | undefined>({
   key: 'QuoteSelector',
